@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style-register.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-rtl.min.css">
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+    <title>Plans Classes Admin</title>
+</head>
+<body>
+
+<section>
+    <header>
+        <div class="header">
+            <form action="/logout" method="post"><button href="/logout" class="btn_header" style="padding: 9px !important"> خروج </button></form>
+            <a type="submit"  href="<%= auth.user.admin ? '/admin' : '/teacher' %>" class="btn_header"> صفحه اصلی </a>
+            <a type="submit" href="/teacher/planDays" class="btn_header"> تعریف برنامه </a>
+            <a type="submit" href="/auth/reporting" class="btn_header"> گزارش گیری </a>
+        </div>
+    </header>
+</section>
+
+<section class="body">
+
+    <section class="main_body">
+    
+        <!-- <main class="main_form_register"> -->
+            <!-- <h1 class="head"> سطح دسترسی </h1> -->
+            <main class="back_form">
+                <!-- <div class="table-responsive"> -->
+                    <table class="table_access">
+                    <thead>
+                        <tr>
+                            <th>نام</th>
+                            <th>نام کاربری</th>
+                            <th>تاریخ عضویت</th>
+                            <th>تنظیمات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                <% user.forEach(user => { %>
+                    <tr>
+                    <td class="head1"> <%= user.name %></td>
+                    <td class="head1"> <%= user.username %></td>
+                    <td class="head1"> <%= date(user.createdAt).fromNow() %></td>
+
+                <td>
+                    <form class="form" method="post"  action="/admin/accessLevel/delete/<%= user.id %>?_method=DELETE"" novalidate>
+                        <a href="/admin/accessLevel/<%= user._id %>" class="btn btn-primary"><%= user.admin ? 'لغو مدیریت' : 'مدیریت' %></a>
+                        <button type="submit" class="btn btn-danger">حذف</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %> 
+        </tbody>
+        </table>
+        <!-- </main>
+    </main> -->
+    </section>
+
+    </section>  
+    </body>
+</html>

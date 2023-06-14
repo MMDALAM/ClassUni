@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style-register.css">
+    <title>Plans Classes</title>
+</head>
+<body>
+
+
+<section>
+    <header>
+        <div class="header">
+            <form action="/logout" method="post"><button href="/logout" class="btn_header" style="padding: 9px !important"> خروج </button></form>
+            <a type="submit" href="/auth/reporting" class="btn_header"> گزارش گیری </a>
+            <a type="submit" href="/teacher/planDays" class="btn_header"> تعریف برنامه </a><a type="submit"  href="<%= auth.user.admin ? '/admin' : '/teacher' %>" class="btn_header"> صفحه اصلی </a>
+        </div>
+    </header>
+</section>
+
+<section class="body_plan">
+
+    <% classes.forEach(cls => { %>
+    <div class="main_body">
+    <main class="main_form_plan">
+        <h1 class="head_plan"> کلاس <%= cls.classId %> روز سه شنبه  </h1>
+            <main class="back_form" id="back_form">
+                <div ><a type="submit" href="/teacher/single-class/<%= cls.id %>"  class="btn_plan">
+                    <%= cls.className %> </a>
+            </main>
+    </main>
+    </div>
+    <% }) %>
+    </section>  
+    </body>
+</html>

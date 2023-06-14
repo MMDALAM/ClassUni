@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style-register.css">
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+    <title>Plans Classes Admin</title>
+</head>
+<body>
+
+
+    <header>
+        <div class="header">
+          <form action="/logout" method="post"><button href="/logout" class="btn_header" style="padding: 9px !important""> خروج </button></form>
+            <a type="submit" href="/auth/reporting" class="btn_header"> گزارش گیری </a>
+            <a type="submit" href="/teacher/planDays" class="btn_header"> تعریف برنامه </a>
+            <a type="submit"  href="<%= auth.user.admin ? '/admin' : '/teacher' %>" class="btn_header"> صفحه اصلی </a>
+        </div>
+    </header>
+
+<section class="body">
+
+  <table>
+
+    <tr id="headerTable">
+      <th> نام سازنده </th>
+      <th> روز های هفته </th>
+      <th> کد کلاس </th>
+      <th> رشته </th>
+      <th> نام استاد </th>
+      <th> نام درس </th>
+      <th> نوع </th>
+      <th> ساعت شروع </th>
+      <th> ساعت پایان </th>
+      <th> حذف </th>
+    </tr>
+
+    <% plans.forEach(plan => { %>
+      <tr>
+      <td> <%= plan.user.name %></td>
+      <td> <%= plan.days %></td>
+      <td> <%= plan.classId %></td>
+      <td> <%= plan.field %></td>
+      <td> <%= plan.teacherName %></td>
+      <td> <%= plan.lessonName %></td>
+      <td> <%= plan.type %></td>
+      <td> <%= plan.timeStart %></td>
+      <td> <%= plan.timeEnd %></td>
+      <td>
+        <form class="form" method="post"  action="delete/<%= plan.id %>?_method=DELETE"" novalidate>
+            <button type="submit" class="btn btn-danger">حذف</button>
+        </form>
+      </td>
+      </tr>
+      <% }) %>
+
+</table>
+
+</section>
+</body>
+</html>

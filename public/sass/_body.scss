@@ -1,0 +1,105 @@
+.header_register{
+    width: 100%;
+    height: 3rem;
+    /* box-shadow: 2px 2px 10px  #00000080; */
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-self: flex-start !important;
+  }
+.header{
+    &__text{
+        background-color: black;
+        -webkit-background-clip: text;
+        color: transparent;
+        &:hover{     
+            background-image: linear-gradient(to right, $color-secondary,$color-grey-dark-2);   
+        }
+    }
+}
+.header_main{
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+.body_login{
+    background-image: url(../img/1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around; 
+    align-content: space-between;
+}
+.body_land{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    background-image: url(../img/background1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+.body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-self: flex-start !important;
+}
+
+.main
+{
+    background-image:linear-gradient(105deg,
+    rgba(255, 250, 250,.9)0%,
+    rgba(255, 250, 250,.5)50%,
+    transparent 50%),linear-gradient(135deg, #1687a7 40%,#51c2d5 95%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-weight: 700;
+    font-family: MyFontName,'Segoe UI',sans-serif;;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; 
+    align-content: space-between;
+ }
+
+ .main_main{
+    width: 30rem;
+    height: 50rem;
+    box-shadow: 2px 2px 10px  #00000080;
+  }
+
+  .main_body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .text_user_header{
+    width: 20rem;
+    height: 100%;
+    margin: 1rem;
+    padding: 1rem;
+    color: black !important;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    color: #C9D8F3;
+    font-size:1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+
+  }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style-register.css" />
+    <title>Plans Classes Admin</title>
+  </head>
+  <body>
+    <section>
+      <header>
+        <div class="header">
+          <form action="/logout" method="post">
+            <button
+              href="/logout"
+              class="btn_header"
+              style="padding: 9px !important"
+            >
+              خروج
+            </button>
+          </form>
+          <a type="submit" href="/auth/reporting" class="btn_header">
+            گزارش گیری
+          </a>
+          <a type="submit" href="/teacher/planDays" class="btn_header">
+            تعریف برنامه
+          </a>
+          <a
+            type="submit"
+            href="<%= auth.user.admin ? '/admin' : '/teacher' %>"
+            class="btn_header"
+          >
+            صفحه اصلی
+          </a>
+        </div>
+      </header>
+    </section>
+
+    <section class="body">
+      <section class="main_body">
+        <main class="main_form_register">
+          <h1 class="head">تعریف کلاس ها</h1>
+          <main class="back_form" id="back_form">
+            <form class="form" method="POST" action="/auth/class" novalidate>
+              <%- include('../layouts/error-messages.ejs'); -%>
+
+              <div class="inpt">
+                <input
+                  type="number"
+                  class="inout"
+                  name="classId"
+                  placeholder=" کد کلاس "
+                  required
+                />
+              </div>
+
+              <div class="inpt">
+                <input
+                  type="text"
+                  class="inout"
+                  name="className"
+                  placeholder=" نام کلاس "
+                  required
+                />
+              </div>
+
+              <select id="type" name="type" class="inpt_select">
+                <option disabled selected>نوع کلاس</option>
+                <option value="کلاس">کلاس</option>
+                <option value="کارگاهی">کارگاهی</option>
+                <option value="حیاط">حیاط</option>
+                <option value="آزاد">آزاد</option>
+                <option value="سالن">سالن</option>
+              </select>
+
+              <select id="days" name="days" class="inpt_select">
+                <option disabled selected>روز های هفته</option>
+                <option value="شنبه">شنبه</option>
+                <option value="یک شنبه">یک شنبه</option>
+                <option value="دوشنبه">دوشنبه</option>
+                <option value="سه شنبه">سه شنبه</option>
+                <option value="چهارشنبه">چهارشنبه</option>
+                <option value="پنج شنبه">پنج شنبه</option>
+              </select>
+
+              <div>
+                <button type="submit" class="buttom">ثبت</button>
+              </div>
+            </form>
+          </main>
+        </main>
+      </section>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style-register.css" />
+    <title>Plans Classes Admin</title>
+  </head>
+  <body>
+    <section>
+      <header>
+        <div class="header">
+          <a type="submit" href="/logout" class="btn_header"> خروج </a>
+          <a type="submit" href="/auth/reporting" class="btn_header">
+            گزارش گیری
+          </a>
+          <a type="submit" href="/teacher/planDays" class="btn_header">
+            تعریف برنامه
+          </a>
+          <a
+            type="submit"
+            href="<%= auth.user.admin ? '/admin' : '/teacher' %>"
+            class="btn_header"
+          >
+            صفحه اصلی
+          </a>
+        </div>
+      </header>
+    </section>
+
+    <section class="body">
+      <section class="main_body">
+        <main class="main_form_register">
+          <h1 class="head">پاک کردن برنامه</h1>
+          <main class="back_form" id="back_form">
+            <form
+              class="form"
+              method="POST"
+              action="/auth/deleteAllPlan"
+              novalidate
+            >
+              <div>
+                <p>به زودی</p>
+                <button type="submit" class="buttom_disabled" disabled>
+                  پشتیبان گیری
+                </button>
+              </div>
+            </form>
+
+            <form
+              class="form"
+              onclick=""
+              method="POST"
+              action="/auth/deleteAllPlan"
+              novalidate
+            >
+              <div>
+                <p>
+                  لطفا دقت کنید<br />
+                  این دکمه برای حذف کردن کل برنامه یک ترم است <br />لطفا فقط در
+                  پایان ترم استفاده شود
+                </p>
+                <button class="buttom">حذف کل برنامه ترم</button>
+              </div>
+            </form>
+          </main>
+        </main>
+      </section>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
+
+    <% let sweetalert = req.flash('sweetalert'); if (sweetalert.length){ let
+    data = sweetalert[0]; %>
+    <script>
+      Swal.fire({
+          title: '<%= data.title %>',
+          text: '<%= data.message %>',
+          icon: '<%= data.icon %>',
+          showCancelButton: true,
+          cancelButtonText: 'انصراف',
+          showConfirmButton: <%= data.button !== null ? true : false %>,
+          confirmButtonText: '<%= data.button %>',
+          timer : <%= data.button !== null ? 'null' : data.timer %>,
+      }).then((result) => {
+          if (result.isConfirmed) {
+              Swal.fire(
+              'انجام شد',
+              'تمام فایل ها برنامه پاک شدند',
+              'success'
+              ),
+              window.location = '/auth/deleteAllPlans';
+          }
+      })
+    </script>
+    <% } %>
+  </body>
+</html>

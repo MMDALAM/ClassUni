@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style-register.css" />
+    <link rel="stylesheet" media="print" href="../css/madiaPrint.css" />
+    <!-- <link rel="stylesheet" href="../../css/style-reporting.css"> -->
+    <title>Plans Classes Admin</title>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <form action="/logout" method="post">
+          <button
+            href="/logout"
+            class="btn_header"
+            style="padding: 9px !important"
+          >
+            خروج
+          </button>
+        </form>
+        <a type="submit" href="/teacher/myClass" class="btn_header">
+          کلاس های من
+        </a>
+        <a type="submit" href="/teacher/planDays" class="btn_header">
+          تعریف برنامه
+        </a>
+        <a
+          type="submit"
+          href="<%= auth.user.admin ? '/admin' : '/teacher' %>"
+          class="btn_header"
+        >
+          صفحه اصلی
+        </a>
+      </div>
+    </header>
+    <h1 class="print_text">برنامه روزانه یکشنبه</h1>
+    <section class="body">
+      <table>
+        <tr id="headerTable">
+          <th>روز های هفته</th>
+          <th>کد کلاس</th>
+          <th>نام کلاس</th>
+          <th>رشته</th>
+          <th>نام استاد</th>
+          <th>نام درس</th>
+          <th>نوع</th>
+          <th>ساعت شروع</th>
+          <th>ساعت پایان</th>
+          <th>ترم</th>
+        </tr>
+
+        <% for(var i = 0 ; i < repSunday[1].length ; i++) { %>
+        <tr>
+          <td><%= repSunday[1][i] %></td>
+          <td><%= repSunday[2][i] %></td>
+          <td><%= repSunday[3][i] %></td>
+          <td><%= repSunday[4][i] %></td>
+          <td><%= repSunday[5][i] %></td>
+          <td><%= repSunday[6][i] %></td>
+          <td><%= repSunday[7][i] %></td>
+          <td><%= repSunday[8][i] %></td>
+          <td><%= repSunday[9][i] %></td>
+          <td><%= repSunday[10][i] %></td>
+        </tr>
+        <% } %>
+      </table>
+
+      <div
+        style="
+          display: flex;
+          flex-direction: column !important;
+          justify-content: center !important;
+          align-items: center !important;
+          align-self: center !important;
+        "
+      >
+        <button
+          type="submit"
+          onclick="window.print()"
+          class="btn_print"
+        ></button>
+
+        <form action="/reporting/pdfSunday" method="get">
+          <button type="submit" class="btn_pdf"></button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

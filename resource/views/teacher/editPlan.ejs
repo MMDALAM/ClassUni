@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style-register.css">
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+    <title>Plans Classes Admin</title>
+</head>
+<body>
+
+
+<section>
+    <header>
+        <div class="header">
+            <form action="/logout" method="post"><button href="/logout" class="btn_header" style="padding: 9px !important""> خروج </button></form>
+            <div ><a type="submit" class="btn_header"> گزارش گیری </a></div>
+            <div ><a type="submit" href="/auth/plan" class="btn_header"> تعریف برنامه </a></div>
+        </div>
+    </header>
+</section>
+
+<section class="body">
+    <section class="main_body">
+    
+    <main class="main_form_register">
+            <h1 class="head"> ویرایش برنامه <%= plans.className %> </h1>
+            <main class="back_form" id="back_form">
+
+            <form class="form" method="POST"  action="/teacher/classes" novalidate>
+
+
+                <input class="inpt_select" placeholder="<%= plans.className %>" disabled >
+
+                <input class="inout" type="hidden" name="classId" value="<%= plans.classId %>" >
+
+                <input class="inout" type="hidden" name="days" value="<%= plans.days %>" >
+
+
+                <select  name="field" class="inpt_select" >
+                    <option value="" disabled selected  > رشته و گرایش </option>
+                    <% if(fields.length >= 0) { %> 
+                        <% fields.forEach(field => { %>
+                    <option value="<%= field %>"> <%= field %> </option>
+                    <% }) %>
+                    <% } %>
+                </select>
+
+
+                <select  name="lessonName" class="inpt_select" >
+                    <option value="" disabled selected  > نام درس مورد نظر </option>
+                    <% if(lessonses.length >= 0) { %> 
+                        <% lessonses.forEach(lesson => { %>
+                    <option value="<%= lesson %>"> <%= lesson %> </option>
+                    <% }) %>
+                    <% } %>
+                </select>
+
+
+                <select  name="teacherName" class="inpt_select" >
+                    <option value="" disabled selected  > استاد مورد نظر </option>
+                    <% if(teachersAuth.length >= 0) { %> 
+                        <% teachersAuth.forEach(Teach => { %>
+                    <option value="<%= plans.Teach %>"> <%= plans.Teach %> </option>
+                    <% }) %>
+                    <% } %>
+                </select>
+
+
+                <select  name="termCode" class="inpt_select" >
+                    <option value="" disabled selected  > کد ترم </option>
+                    <% if(terms.length >= 0) { %> 
+                        <% terms.forEach(term => { %>
+                    <option value="<%= term %>"> <%= term %> </option>
+                    <% }) %>
+                    <% } %>
+                </select>
+
+                <div class="inpt_time">
+                    <input  type="time" min="08:00" max="19:00"  name="classTime1" placeholder=" زمان شروع کلاس "  required>
+                </div> 
+
+                <div class="inpt_time">
+                    <input  type="time" min="08:00" max="19:00"  name="classTime2" placeholder=" زمان پایان کلاس  "  required>
+                </div>
+                
+                <div>
+                    <button type="submit" class="buttom"> ثبت </button>
+                </div>
+                            
+            </form>
+        </main>
+    </main>
+    </section>
+</section>                        
+</body>
+</html>

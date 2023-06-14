@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style-register.css" />
+    <link rel="stylesheet" media="print" href="../css/madiaPrint.css" />
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon" />
+    <title>Plans Classes Admin</title>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <form action="/logout" method="post">
+          <button
+            href="/logout"
+            class="btn_header"
+            style="padding: 9px !important"
+          >
+            خروج
+          </button>
+        </form>
+        <a type="submit" href="/teacher/myClass" class="btn_header">
+          کلاس های من
+        </a>
+        <a type="submit" href="/teacher/planDays" class="btn_header">
+          تعریف برنامه
+        </a>
+        <a
+          type="submit"
+          href="<%= auth.user.admin ? '/admin' : '/teacher' %>"
+          class="btn_header"
+        >
+          صفحه اصلی
+        </a>
+      </div>
+    </header>
+
+    <section class="body">
+      <table>
+        <tr id="headerTable">
+          <th>روز های هفته</th>
+          <th>کد کلاس</th>
+          <th>نوع</th>
+        </tr>
+
+        <% for(var i = 0 ; i < repSunday[1].length ; i++) { %>
+        <tr>
+          <td><%= repSunday[1][i] %></td>
+          <td><%= repSunday[2][i] %></td>
+          <td><%= repSunday[3][i] %></td>
+        </tr>
+        <% } %>
+      </table>
+    </section>
+  </body>
+</html>

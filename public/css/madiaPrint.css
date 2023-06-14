@@ -1,0 +1,36 @@
+body {
+    background-image: none !important;
+    background-color: #fff !important;
+}
+.btn_pdf{
+    display: none;
+}
+.btn_print{
+    display: none;
+}
+.btn_header{
+    display: none;
+}
+html , body{
+    width: auto;
+    height: auto;
+    overflow-y: hidden !important;
+  }
+
+  table{
+      background-color: white;
+      background-image: none;
+      margin: 1rem;
+  }
+  table , th ,td ,tr{
+      font-size: .9rem;
+      font-weight: 900;
+      padding: .7rem;
+  }
+
+
+@page {
+    size: auto;
+    margin: 3px;
+    border: solid 1px #000;
+  }

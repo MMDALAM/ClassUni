@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style-register.css" />
+    <title>Plans Classes Admin</title>
+  </head>
+  <body>
+    <section>
+      <header>
+        <div class="header">
+          <form action="/logout" method="post">
+            <button
+              type="submit"
+              href="/logout"
+              style="padding: 9px !important"
+              class="btn_header"
+            >
+              خروج
+            </button>
+          </form>
+          <div><a type="submit" class="btn_header"> گزارش گیری </a></div>
+          <div>
+            <a type="submit" href="/auth/plan" class="btn_header">
+              تعریف برنامه
+            </a>
+          </div>
+        </div>
+      </header>
+    </section>
+
+    <section class="body">
+      <section class="main_body">
+        <main class="main_form_register">
+          <h1 class="head">تعریف برنامه روز شنبه</h1>
+          <main class="back_form" id="back_form">
+            <form
+              class="form"
+              method="POST"
+              action="/teacher/planDays1"
+              novalidate
+            >
+              <%- include('../../layouts/error-messages.ejs'); -%>
+
+              <select id="classId" name="classId" class="inpt_select">
+                <option disabled selected>کد کلاس 1</option>
+                <% if(classCode.length >= 0) { %> <% classCode.forEach(classes
+                => { %>
+                <option value="<%= classes %>"><%= classes %></option>
+                <% }) %> <% } %>
+              </select>
+
+              <input
+                class="inout"
+                type="hidden"
+                name="days"
+                value="شنبه"
+                required
+              />
+
+              <select id="classId2" name="classId2" class="inpt_select">
+                <option disabled selected>کد کلاس 2</option>
+                <% if(classCode.length >= 0) { %> <% classCode.forEach(classes
+                => { %>
+                <option value="<%= classes %>"><%= classes %></option>
+                <% }) %> <% } %>
+              </select>
+
+              <!-- <div class="inpt">
+                    <select id="classId2" name="classId2" class="inpt_select" >
+                        <option disabled selected  > کد کلاس 1  </option>
+                        
+                    </select>
+                    <input  class="inout" type="text" name="classId2" placeholder=" 2 کد کلاس " required>
+                </div>
+
+                <div class="inpt">
+                    <input  class="inout" type="text" name="classId3" placeholder=" 3 کد کلاس " required>
+                </div>
+
+                <div class="inpt">
+                    <input  class="inout" type="text" name="classId4" placeholder=" 4 کد کلاس " required>
+                </div>-->
+
+              <select name="field" class="inpt_select">
+                <option value="" disabled selected>رشته و گرایش</option>
+                <% if(fields.length >= 0) { %> <% fields.forEach(field => { %>
+                <option value="<%= field %>"><%= field %></option>
+                <% }) %> <% } %>
+              </select>
+
+              <select name="lessonName" class="inpt_select">
+                <option value="" disabled selected>نام درس مورد نظر</option>
+                <% if(lessonses.length >= 0) { %> <% lessonses.forEach(lesson =>
+                { %>
+                <option value="<%= lesson %>"><%= lesson %></option>
+                <% }) %> <% } %>
+              </select>
+
+              <select name="teacherName" class="inpt_select">
+                <option value="" disabled selected>استاد مورد نظر</option>
+                <% if(teachersAuth.length >= 0) { %> <%
+                teachersAuth.forEach(Teach => { %>
+                <option value="<%= Teach %>"><%= Teach %></option>
+                <% }) %> <% } %>
+              </select>
+
+              <select name="termCode" class="inpt_select">
+                <option value="" disabled selected>کد ترم</option>
+                <% if(terms.length >= 0) { %> <% terms.forEach(term => { %>
+                <option value="<%= term %>"><%= term %></option>
+                <% }) %> <% } %>
+              </select>
+
+              <div>
+                <button type="submit" class="buttom">ثبت</button>
+              </div>
+            </form>
+          </main>
+        </main>
+      </section>
+    </section>
+  </body>
+</html>

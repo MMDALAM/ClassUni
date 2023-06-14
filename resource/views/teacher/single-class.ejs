@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style-register.css">
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <title>Plans Classes Admin</title>
+</head>
+<body>
+
+
+
+<section>
+    <header>
+        <div class="header">
+            <form action="/logout" method="post"><button href="/logout" class="btn_header" style="padding: 9px !important"> خروج </button></form>
+            <a type="submit" href="/auth/reporting" class="btn_header"> گزارش گیری </a>
+            <a type="submit" href="/teacher/planDays" class="btn_header"> تعریف برنامه </a>
+            <a type="submit"  href="<%= auth.user.admin ? '/admin' : '/teacher' %>" class="btn_header"> صفحه اصلی </a>
+        </div>
+    </header>
+</section>
+
+<section class="body">
+
+    <section class="main_body">
+    
+        <main class="main_form_register">
+                <h1 class="head"> تعریف برنامه کلاس <%= singleClass.className %> </h1>
+                <main class="back_form" id="back_form">
+    
+                <form class="form" method="POST"  action="/teacher/single-class">
+    
+                    <%- include('../layouts/error-messages.ejs'); -%>
+    
+                    <input class="inpt_select" placeholder=" <%= singleClass.className %>" disabled >
+    
+                    <input class="inout" type="hidden" name="classId" value="<%= singleClass.classId %>" >
+    
+                    <input class="inout" type="hidden" name="days" value="<%= singleClass.days %>" >
+    
+    
+                    <select id="field" name="field" class="inpt_select" >
+
+                    <option value="<%= old('field') %>" selected><%= old('field') ? old('field') : ' رشته و گرایش مورد نظر '%></option>
+
+                    <% if(fields.length >= 0) { %> 
+                        <% fields.forEach(field => { %>
+                    <option value="<%= field %>"> <%= field %> </option>
+                        <% }) %>
+                        <% } %>
+                    </select> 
+
+
+                    <input list="brow" id="datalist" name="lessonName" class="inpt_select" value="<%= old('lessonName') ? old('lessonName') : '' %>" placeholder=" درس مورد نظر " >
+                    <datalist id="brow" >
+                        <!-- <% if(Lessons.length >= 0) { %> -->
+                            <% Lessons.forEach(lesson  => { %>
+                                    <option value="<%= lesson.lessonName %>">
+                            <% }) %>
+                            <!-- <% } %> -->
+                    </datalist> 
+
+                    <select  name="teacherName" class="inpt_select">
+
+                            <option value="<%= old('teacherName') %>" selected><%= old('teacherName') ? old('teacherName') : 'استاد مورد نظر'%></option>
+
+                        <% if(teachersAuth.length >= 0) { %> 
+                            <% teachersAuth.forEach(Teach => { %>
+                        <option value="<%= Teach %>">
+                             <%= Teach %> </option>
+                        <% }) %>
+                        <% } %>
+                    </select>
+                    
+    
+                    <select name="termCode" class="inpt_select" >
+                        <option value="<%= old('termCode') %>" selected><%= old('termCode') ? old('termCode') : ' کد ترم مورد نظر '%></option>
+                        <% if(terms.length >= 0) { %> 
+                            <% terms.forEach(term => { %>
+                        <option value="<%= term %>"> <%= term %> </option>
+                        <% }) %>
+                        <% } %>
+                    </select>
+
+                        <input class="inpt_time" value="<%= old('classTime1') %>" type="time" min="08:00" max="19:00"  name="classTime1" placeholder=" زمان شروع کلاس ">
+    
+
+                        <input class="inpt_time" value="<%= old('classTime2') %>" type="time" min="08:00" max="19:00"  name="classTime2" placeholder=" زمان پایان کلاس " >
+
+                    
+                        <button type="submit" id="btn" class="buttom"> ثبت </button>
+                                
+                </form>
+            </main>
+        </main>
+    </section>
+
+<table>
+        <tr id="headerTable">
+            <th> روز های هفته </th>
+            <th> کد کلاس </th>
+            <th> نام کلاس </th>
+            <th> رشته </th>
+            <th> نام استاد </th>
+            <th> نام درس </th>
+            <th> نوع </th>
+            <th> ساعت شروع </th>
+            <th> ساعت پایان </th>
+            <th> ترم </th>
+        </tr>
+
+        <% reports.forEach(rep => { %>
+        <tr>
+            <td><%= rep.days %></td>
+            <td><%= rep.classId %></td>
+            <td><%= rep.className %></td>
+            <td><%= rep.field %></td>
+            <td><%= rep.teacherName %></td>
+            <td><%= rep.lessonName %></td>
+            <td><%= rep.type %></td>
+            <td><%= rep.timeStart %></td>
+            <td><%= rep.timeEnd %></td>
+            <td><%= rep.termCode %></td>
+        </tr>
+      <% }) %>
+</table>
+
+
+</section>
+
+</body>
+</html>

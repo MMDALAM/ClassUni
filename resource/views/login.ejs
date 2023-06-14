@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+    <title>Plans Classes</title>
+  </head>
+  <body class="body_login">
+    <header class="header">
+      <h1 class="header__text">دانشکده فنی و مهندسی دزفول</h1>
+      <h2>سامانه ثبت کلاس ها</h2>
+    </header>
+
+    <main class="main">
+      <div class="main__form">
+        <form class="form" method="POST" action="/" novalidate>
+          <h2 class="form__text">ورود به سامانه</h2>
+
+          <%- include('layouts/error-messages.ejs'); -%>
+
+          <div class="form__login">
+            <input
+              id="username"
+              type="username"
+              name="username"
+              class="input"
+              placeholder="نام کاربری"
+              required
+              autofocus
+            />
+          </div>
+
+          <div class="form__login">
+            <input
+              id="password"
+              type="password"
+              name="password"
+              class="input"
+              placeholder="رمز عبور"
+              required
+            />
+          </div>
+
+          <div class="form__login">
+            <button type="submit" class="btn" id="btn_login">ورود</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <h4>
+        کلیه حقوق این سایت متعلق به دانشکده فنی و مهندسی دزفول می‌باشد
+        <br />ساخته شده توسط
+        <small>
+          <a
+            style="
+              padding: 0.2rem;
+              font-size: 1.1rem;
+              color: darkorange !important;
+              font-weight: 900;
+            "
+            href="https://mmdalam.ir/"
+          >
+            محمد عالم زاده
+          </a></small
+        >
+      </h4>
+    </footer>
+
+    <!-- <script>
+        document.getElementById('form').addEventListener('btn_login' , function(el){
+            el.preventDefault();
+        })
+    </script> -->
+  </body>
+</html>
