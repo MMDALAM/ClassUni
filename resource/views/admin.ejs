@@ -20,7 +20,7 @@
             <a type="submit" href="/teacher/planDays" class="btn_header"> تعریف برنامه </a>
             <section class="main_body">
                 <div class="main_form"> 
-                    <h1 class="head"> MANU </h1>
+                    <h1 class="head"></h1>
                         <main class="back_form" id="back_form">
                             <div class="form_link">
                                 <section class="text_user_header">
@@ -28,7 +28,7 @@
                                     <div class="user1">
                                         <h3>  <%= auth.user.username %> : نام کاربری </h3></div>
                                         <div class="user2">
-                                        <h3> سطح دسترسی : <%= auth.user.admin ? 'مدیریت' : 'اساتید' %></h3></div>
+                                        <h3> سطح دسترسی : <%= auth.user.admin ? 'مدیرگروه' : 'اساتید' %></h3></div>
                                         <div class="user3">
                                         <h3> تاریخ عضویت : <%= date(auth.user.createdAt).fromNow() %></h3></div>
                                     <% } %>

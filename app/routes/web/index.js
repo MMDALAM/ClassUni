@@ -12,15 +12,15 @@ router.use("/", loginRouter);
 
 //admin router
 const adminRouter = require("./admin");
-router.use("/admin", redirectIfNotAdmin.handle, adminRouter);
+router.use("/admin", adminRouter);
 
 //auth router
 const authRouter = require("./auth");
-router.use("/auth", redirectIfAuthenticated.handle, authRouter);
+router.use("/auth", authRouter);
 
 // teacher router
 const teacherRouter = require("./teacher");
-router.use("/teacher", redirectIfAuthenticated.handle, teacherRouter);
+router.use("/teacher", teacherRouter);
 
 // reporting router
 const reportingRouter = require("./reporting");
