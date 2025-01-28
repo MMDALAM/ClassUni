@@ -135,7 +135,7 @@ p {
   box-shadow: 2px 2px 10px #00000080;
   display: block;
   transform-style: preserve-3d;
-  background-image: linear-gradient(140deg, rgb(255, 255, 255), #5cd1ee);
+  background-image: linear-gradient(140deg, #5cd1ee, #5cd1ee);
   border-radius: 30px !important ;
 }
 @media only screen and (max-width: 1380px) {
@@ -200,7 +200,7 @@ p {
   font-size: 30px;
   text-align: center;
   padding: 20px 0;
-  background-image: linear-gradient(135deg, #1687a7 40%, #51c2d5 90%);
+  background-color: black;
   border-top-left-radius: 30px !important;
   border-top-right-radius: 30px !important;
 }
@@ -215,7 +215,7 @@ p {
   font-size: 20px;
   text-align: center;
   padding: 15px 0;
-  background-image: linear-gradient(135deg, #1687a7 40%, #51c2d5 90%);
+  background-color: black;
   border-top-left-radius: 30px !important;
   border-top-right-radius: 30px !important;
 }
@@ -233,23 +233,30 @@ p {
 .btn_header {
   width: 20rem;
   height: 100%;
-  background: linear-gradient(60deg, #5073b8, #1098ad);
+  background: #1098ad;
+  /* background: #ffffff; */
   box-shadow: 2px 2px 10px #00000080;
   border: none;
-  font-family: MyFont, "Segoe UI", sans-serif !important;
-  color: #c9d8f3;
-  font-size: 25px;
+  color: #000 !important;
+  font-size: 22px;
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
   outline: none;
-  padding: 15px 15px !important;
+  padding: 15px 15px;
   border-bottom-left-radius: 30px !important;
   border-bottom-right-radius: 30px !important;
 }
+@media only screen and (max-width: 1780px) {
+  .btn_header {
+    width: 18rem;
+    height: 100%;
+  }
+}
+
 @media only screen and (max-width: 1480px) {
   .btn_header {
-    width: 13rem;
+    width: 12.5rem;
     height: 90%;
   }
 }
@@ -263,11 +270,12 @@ p {
   transform: translateY(-3px);
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
   transition: all.5s;
+  font-family: MyFont, "Segoe UI", sans-serif !important;
 }
 .btn_plan {
   width: 100%;
   height: 100%;
-  background: linear-gradient(60deg, #5073b8, #1098ad);
+  background: linear-gradient(60deg, #1098ad, #1098ad);
   border: none;
   color: black !important;
   font-size: 25px;

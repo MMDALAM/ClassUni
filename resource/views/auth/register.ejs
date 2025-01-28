@@ -27,12 +27,9 @@
           <a type="submit" href="/teacher/planDays" class="btn_header">
             تعریف برنامه
           </a>
-          <a
-            type="submit"
-            href="<%= auth.user.admin ? '/admin' : '/teacher' %>"
-            class="btn_header"
-          >
-            صفحه اصلی
+          <a type="submit" <% if(auth.check){ %>
+            href="<%= auth.user.admin ? '/admin' : '/teacher' %>" <%} %>
+            class="btn_header" > صفحه اصلی
           </a>
         </div>
       </header>

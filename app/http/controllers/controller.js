@@ -1,4 +1,4 @@
-const autoBind = require("auto-bind");
+const autoBind = require("auto-bind-inheritance");
 const isMongoId = require("validator/lib/isMongoId");
 const { validationResult } = require("express-validator");
 
